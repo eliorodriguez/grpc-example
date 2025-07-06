@@ -1,0 +1,34 @@
+syntax = "proto3";
+
+package bike;
+
+service BikeService {
+  rpc ListBikes (Empty) returns (BikeListResponse);
+  rpc GetBike (BikeRequest) returns (BikeResponse);
+  rpc CreateBike (CreateBikeRequest) returns (BikeResponse);
+}
+
+message Empty {}
+
+message BikeResponse {
+  int32 id = 1;
+  string brand = 2;
+  string model = 3;
+  string color = 4;
+  int32 year = 5;
+}
+
+message BikeListResponse {
+  repeated BikeResponse bikes = 1;
+}
+
+message BikeRequest {
+  int32 id = 1;
+}
+
+message CreateBikeRequest {
+  string brand = 1;
+  string model = 2;
+  string color = 3;
+  int32 year = 4;
+} 
